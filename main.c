@@ -2,9 +2,6 @@
 
 #define SIMULATION_STEP 8
 
-#define WINDOW_WIDTH 1280
-#define WINDOW_HEIGHT 720
-
 #include <stdio.h>
 #include <math.h>
 #include <SDL2/SDL.h>
@@ -71,9 +68,12 @@ int main(int argc, char **argv) {
 						frames = 0;
 					} else if (event.key.keysym.sym == SDLK_r) {
 						// Reset the simulation- set camera to center of usable area, and reset grid to be empty.
+						paused = 1;
 						camera_x = camera_y = (GRID_SIZE / 2) * CELL_SIZE;
 						int nothing[GRID_SIZE][GRID_SIZE] = {0};
 						copy_grid(nothing, grid);
+					} else if (event.key.keysym.sym == SDLK_o) {
+						randomize_cells();
 					}
 					break;	
 				}
@@ -94,7 +94,7 @@ int main(int argc, char **argv) {
 		SDL_RenderDrawRect(renderer, &rect);
 
 		// Don't simulate if paused.
-		
+
 		if (!paused) {
 			if (frames == 0) {
 				update_cells();		

@@ -5,10 +5,15 @@
 #define GRID_SIZE 256
 #define CELL_SIZE 16
 
+#define WINDOW_WIDTH 1280
+#define WINDOW_HEIGHT 720
+
 #include <SDL2/SDL.h>
 
 int grid[GRID_SIZE][GRID_SIZE];
 int camera_x, camera_y, camera_spd;
+
+void randomize_cells();
 
 void update_cells();
 void render_cells(SDL_Renderer *renderer, int paused);

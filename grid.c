@@ -1,9 +1,20 @@
-// This code speaks for itself- no comments needed.
-
 #include "grid.h"
 
 #include <stdio.h>
 
+// For rand() and srand(time(NULL));
+#include <stdlib.h>
+#include <time.h>
+
+void randomize_cells() {
+	srand(time(NULL));
+	for (int y = 0; y < GRID_SIZE; ++y) {
+		for (int x = 0; x < GRID_SIZE; ++x) {
+			int r = rand();
+			grid[y][x] = r > RAND_MAX/2;
+		}		
+	}
+}
 
 void update_cells() {
 	int grid_temp[GRID_SIZE][GRID_SIZE] = { 0 };
@@ -29,7 +40,10 @@ void update_cells() {
 
 void render_cells(SDL_Renderer *renderer, int paused) {
 	for (int y = 0; y < GRID_SIZE; ++y) {
+		if (y * CELL_SIZE < camera_y || y * CELL_SIZE > camera_y + 1200) continue; // Culling
 		for (int x = 0; x < GRID_SIZE; ++x) {
+			if (x * CELL_SIZE < camera_x || x * CELL_SIZE > camera_x + 1500) continue; // Culling
+		
 			if (grid[y][x] == 1) {
 				if (!paused) {
 					SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
