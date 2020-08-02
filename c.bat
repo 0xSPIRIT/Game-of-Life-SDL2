@@ -1,0 +1,1 @@
+gcc *.c -lSDL2 -lSDL2main
