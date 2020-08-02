@@ -1,6 +1,7 @@
 #pragma once
 
 #define GRID_OFFSET 12 // Offset to the left and top of the screen.
+
 #define GRID_SIZE 256
 #define CELL_SIZE 16
 

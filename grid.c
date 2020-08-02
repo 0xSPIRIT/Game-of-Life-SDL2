@@ -1,6 +1,9 @@
+// This code speaks for itself- no comments needed.
+
 #include "grid.h"
 
 #include <stdio.h>
+
 
 void update_cells() {
 	int grid_temp[GRID_SIZE][GRID_SIZE] = { 0 };
@@ -33,10 +36,6 @@ void render_cells(SDL_Renderer *renderer, int paused) {
 				} else {
 					SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
 				}
-				SDL_Rect rect = {(x - GRID_OFFSET) * CELL_SIZE + 1 - camera_x, (y - GRID_OFFSET) * CELL_SIZE + 1 - camera_y, CELL_SIZE - 1, CELL_SIZE - 1};
-				SDL_RenderFillRect(renderer, &rect);
-			} else if (grid[y][x] == 2) {
-				SDL_SetRenderDrawColor(renderer, 127, 0, 0, 255);
 				SDL_Rect rect = {(x - GRID_OFFSET) * CELL_SIZE + 1 - camera_x, (y - GRID_OFFSET) * CELL_SIZE + 1 - camera_y, CELL_SIZE - 1, CELL_SIZE - 1};
 				SDL_RenderFillRect(renderer, &rect);
 			}
