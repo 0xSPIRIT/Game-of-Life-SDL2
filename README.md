@@ -1,6 +1,7 @@
 # Conway's Game of Life (In C and SDL2)
 
 This is an implementation of Conway's Game of Life, written in C and SDL2.
+(https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 
 ## Controls
 
